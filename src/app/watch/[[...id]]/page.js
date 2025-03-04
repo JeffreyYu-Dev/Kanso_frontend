@@ -59,6 +59,7 @@ const Page = async ({ params, searchParams }) => {
 
   // get page data
   const pageData = await getPage(id);
+  console.log(pageData);
   if (!id || !episodeNumber || !pageData) return <h1>INVALID PARAMS</h1>;
   const {
     title,
@@ -89,7 +90,7 @@ const Page = async ({ params, searchParams }) => {
   return (
     <div className="mt-4 flex flex-col gap-4 font-generalSans ">
       {/* MAIN PLAYER with episode selector */}
-      <Player data={{ id, episodeNumber, episodes }} />
+      {/* <Player data={{ id, episodeNumber, episodes }} /> */}
 
       {/* airing schedule */}
       <div className="bg-card p-4 gap-2 rounded flex items-center ">
@@ -186,12 +187,13 @@ const Page = async ({ params, searchParams }) => {
                   <span className="font-medium text-muted-foreground">
                     Episodes:{" "}
                   </span>
-                  {episodes.current}
-                  {episodes.total && (
+                  {/* TODO: FIX THIgS */}
+                  {/* {episodes?.current} */}
+                  {/* {episodes.total && (
                     <span className="text-muted-foreground">
                       /{episodes.total}
                     </span>
-                  )}
+                  )} */}
                 </h3>
                 <h3 className="text-xs font-semibold tracking-wider">
                   <span className="font-medium text-muted-foreground">

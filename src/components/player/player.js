@@ -138,30 +138,17 @@ const Player = ({ data }) => {
     <>
       <div className="flex-col flex lg:flex-row gap-4 justify-between h-fit">
         <div className="flex-grow flex flex-col">
-          {episodes.data.aniwatch.subbed != 0 && (
-            <MediaPlayer
-              storage="storage-key"
-              src={aniwatch.subbed[currentEpisode - 1].stream_links[0].url}
-              className="aspect-video"
-              controls
-              crossOrigin
-              playsInline
-            >
-              <MediaProvider>
-                {aniwatch.subbed[currentEpisode - 1].subtitle_links.map(
-                  (subtitle, index) => (
-                    <Track
-                      src={subtitle.file}
-                      key={index}
-                      kind={subtitle.kind}
-                      label={subtitle.label}
-                      default={subtitle?.default}
-                    />
-                  )
-                )}
-              </MediaProvider>
-            </MediaPlayer>
-          )}
+          <MediaPlayer
+            storage="storage-key"
+            // src={aniwatch.subbed[currentEpisode - 1].stream_links[0].url}
+            src={"#"}
+            className="aspect-video"
+            controls
+            crossOrigin
+            playsInline
+          >
+            <MediaProvider>{/* subtitles */}</MediaProvider>
+          </MediaPlayer>
           <PlayerOptions />
         </div>
 
@@ -169,25 +156,7 @@ const Player = ({ data }) => {
         <div className="bg-card duration-300 ease-in-out rounded shrink-0 lg:basis-80 xl:basis-96 flex flex-col">
           <div className="bg-card h-8">episode options</div>
           <div className="grid grid-cols-4 xl:grid-cols-5 m-1 gap-1 overflow-y-auto">
-            {/* actual buttons */}
-            {aniwatch.subbed.map((item) => {
-              return (
-                <EpisodeButton
-                  key={item.number}
-                  episode={item.number}
-                  isFiller={item.filler}
-                  handleEpisodeChange={handleEpisodeChange}
-                />
-              );
-            })}
-
-            {/* additional buttons based on what's missing */}
-            {/* airing  */}
-            <AdditionalButtons
-              episodes={episodes}
-              handleEpisodeChange={handleEpisodeChange}
-            />
-            {/* completed */}
+            {/* buttons go here */}
           </div>
         </div>
       </div>
@@ -198,19 +167,12 @@ const Player = ({ data }) => {
         <div className="flex flex-col gap-2 w-full">
           <div className="flex-grow bg-card rounded p-2">
             {/* EPISODE DETAILS */}
-            {episodes.data.aniwatch.subbed.length != 0 && (
-              <h2 className="font-semibold text-lg line-clamp-1">
-                {episodes.data.aniwatch.subbed[currentEpisode - 1].title
-                  .english || aniwatch.subbed[currentEpisode - 1].title.romaji}
-              </h2>
-            )}
+            <h2 className="font-semibold text-lg line-clamp-1">
+              {/* EPISODE TITLE */}
+            </h2>
 
             {/* description of episode */}
-            {episodes.data.aniwatch.subbed.length != 0 && (
-              <p className="text-xs line mt-2">
-                {aniwatch.subbed[currentEpisode - 1].description}
-              </p>
-            )}
+            <p className="text-xs line mt-2">{/* description of title */}</p>
           </div>
 
           {/* if server doesn't work text */}
